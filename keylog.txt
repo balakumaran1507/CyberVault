@@ -1,0 +1,29 @@
+2024-08-02 00:26:08,767: Key a pressed
+2024-08-02 00:26:09,678: Special key Key.backspace pressed
+2024-08-02 00:26:12,559: Key a pressed
+2024-08-02 00:26:13,103: Key d pressed
+2024-08-02 00:26:13,271: Key a pressed
+2024-08-02 00:26:17,727: Key a pressed
+2024-08-02 00:26:17,815: Key d pressed
+2024-08-02 00:26:17,936: Key a pressed
+2024-08-02 00:26:22,471: Key a pressed
+2024-08-02 00:26:23,974: Special key Key.backspace pressed
+2024-08-02 00:26:34,527: Key h pressed
+2024-08-02 00:26:34,607: Key e pressed
+2024-08-02 00:26:34,703: Key h pressed
+2024-08-02 00:26:34,750: Key e pressed
+2024-08-02 00:26:34,847: Key h pressed
+2024-08-02 00:26:34,887: Key e pressed
+2024-08-02 00:26:34,999: Key h pressed
+2024-08-02 00:26:35,056: Key e pressed
+2024-08-02 00:26:36,391: Special key Key.backspace pressed
+2024-08-02 00:26:36,645: Special key Key.backspace pressed
+2024-08-02 00:26:36,678: Special key Key.backspace pressed
+2024-08-02 00:26:36,708: Special key Key.backspace pressed
+2024-08-02 00:26:36,756: Special key Key.backspace pressed
+2024-08-02 00:26:36,786: Special key Key.backspace pressed
+2024-08-02 00:26:36,816: Special key Key.backspace pressed
+2024-08-02 00:26:36,847: Special key Key.backspace pressed
+2024-08-02 00:26:36,878: Special key Key.backspace pressed
+2024-08-02 00:26:38,295: Special key Key.ctrl_l pressed
+2024-08-02 00:26:38,503: Key  pressed
