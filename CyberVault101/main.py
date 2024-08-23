@@ -1,55 +1,48 @@
 import tkinter as tk
-from tkinter import filedialog, messagebox
+from tkinter import messagebox
 import subprocess
 import os
+import sys
 
-class ScriptLauncherApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Python Script Launcher")
-        
-        # Create GUI elements
-        self.label = tk.Label(root, text="Select a Python script to run:")
-        self.label.pack(pady=10)
-        
-        self.select_button = tk.Button(root, text="Select Script", command=self.select_script)
-        self.select_button.pack(pady=5)
-        
-        self.run_button = tk.Button(root, text="Run Script", command=self.run_script, state=tk.DISABLED)
-        self.run_button.pack(pady=5)
-        
-        self.script_path = None
+def run_script(script_name):
+    try:
+        # Construct the absolute path for the script
+        script_path = os.path.abspath(script_name)
+        # Run the script using the current Python interpreter
+        subprocess.Popen([sys.executable, script_path], shell=True)
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to run {script_name}\n{str(e)}")
 
-    def select_script(self):
-        # Open a file dialog to select a Python script
-        self.script_path = filedialog.askopenfilename(
-            filetypes=[("Python Files", "*.py")],
-            title="Select a Python Script"
-        )
-        if self.script_path:
-            self.run_button.config(state=tk.NORMAL)
-            messagebox.showinfo("Script Selected", f"Selected Script: {os.path.basename(self.script_path)}")
-        else:
-            self.run_button.config(state=tk.DISABLED)
+# Create the main window
+root = tk.Tk()
+root.title("Cyber Vault Launcher")
+root.geometry("400x400")  # Adjusted window size to accommodate the additional button
+root.config(bg="#1a1a1a")  # Cyber theme background color
 
-    def run_script(self):
-        if not self.script_path:
-            messagebox.showwarning("No Script", "Please select a script to run.")
-            return
-        
-        # Run the selected script
-        try:
-            result = subprocess.run(
-                ['python', self.script_path],
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            messagebox.showinfo("Script Output", result.stdout)
-        except subprocess.CalledProcessError as e:
-            messagebox.showerror("Script Error", f"Error: {e.stderr}")
+# Create a title label with a cyber theme font and color
+title_label = tk.Label(root, text="Cyber Vault Launcher", font=("Helvetica", 18, "bold"), fg="#00ff00", bg="#1a1a1a")
+title_label.pack(pady=20)
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = ScriptLauncherApp(root)
-    root.mainloop()
+# Style the buttons to match the cyber theme
+button_style = {"font": ("Helvetica", 14), "fg": "#00ff00", "bg": "#333333", "activebackground": "#4d4d4d", "relief": "flat", "width": 20}
+
+# Create and place buttons for each script with cyber theme
+button_keylogger = tk.Button(root, text="Run Keylogger", command=lambda: run_script('keylogger_final.py'), **button_style)
+button_keylogger.pack(pady=10)
+
+button_encrypt = tk.Button(root, text="Run Encrypt", command=lambda: run_script('Encrpt.py'), **button_style)
+button_encrypt.pack(pady=10)
+
+button_password_manager = tk.Button(root, text="Run Password Manager", command=lambda: run_script('Password Manager.py'), **button_style)
+button_password_manager.pack(pady=10)
+
+# Add a separator line for aesthetics
+separator = tk.Frame(root, height=2, bd=0, bg="#00ff00")
+separator.pack(fill="x", pady=10)
+
+# Add a footer label with a cyber theme
+footer_label = tk.Label(root, text="© 2024 Cyber Vault", font=("Helvetica", 10), fg="#00ff00", bg="#1a1a1a")
+footer_label.pack(side="bottom", pady=10)
+
+# Start the GUI event loop
+root.mainloop()

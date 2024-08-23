@@ -7,30 +7,40 @@ class EncryptionApp:
     def __init__(self, root):
         self.root = root
         self.root.title("File/Folder Encryption App")
+        self.root.geometry("400x400")  # Fixed window size
+        self.root.config(bg="#1a1a1a")  # Cyber theme background color
         
-        # Generate and save key button
+        # Key generation
         self.key = None
         self.key_file = 'secret.key'
         
-        self.generate_key_button = tk.Button(root, text="Generate Key", command=self.generate_key)
+        # Style the buttons to match the cyber theme
+        button_style = {"font": ("Helvetica", 14), "fg": "#00ff00", "bg": "#333333", "activebackground": "#4d4d4d", "relief": "flat", "width": 25}
+
+        # Generate and save key button
+        self.generate_key_button = tk.Button(root, text="Generate Key", command=self.generate_key, **button_style)
         self.generate_key_button.pack(pady=10)
         
         # Encrypt File button
-        self.encrypt_file_button = tk.Button(root, text="Encrypt File", command=self.encrypt_file)
+        self.encrypt_file_button = tk.Button(root, text="Encrypt File", command=self.encrypt_file, **button_style)
         self.encrypt_file_button.pack(pady=10)
         
         # Decrypt File button
-        self.decrypt_file_button = tk.Button(root, text="Decrypt File", command=self.decrypt_file)
+        self.decrypt_file_button = tk.Button(root, text="Decrypt File", command=self.decrypt_file, **button_style)
         self.decrypt_file_button.pack(pady=10)
         
         # Encrypt Folder button
-        self.encrypt_folder_button = tk.Button(root, text="Encrypt Folder", command=self.encrypt_folder)
+        self.encrypt_folder_button = tk.Button(root, text="Encrypt Folder", command=self.encrypt_folder, **button_style)
         self.encrypt_folder_button.pack(pady=10)
         
         # Decrypt Folder button
-        self.decrypt_folder_button = tk.Button(root, text="Decrypt Folder", command=self.decrypt_folder)
+        self.decrypt_folder_button = tk.Button(root, text="Decrypt Folder", command=self.decrypt_folder, **button_style)
         self.decrypt_folder_button.pack(pady=10)
         
+        # Add a footer label with a cyber theme
+        footer_label = tk.Label(root, text="© 2024 Cyber Vault", font=("Helvetica", 10), fg="#00ff00", bg="#1a1a1a")
+        footer_label.pack(side="bottom", pady=10)
+
     def generate_key(self):
         """Generate a key and save it."""
         self.key = Fernet.generate_key()
